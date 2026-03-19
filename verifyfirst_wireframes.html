@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VerifyFirst — Wireframes</title>
+<style>
+  /* ── DESIGN TOKENS ─────────────────────────────────────────────── */
+  :root {
+    --bg-page:        #F0EEE9;
+    --bg-surface:     #FFFFFF;
+    --bg-subtle:      #F5F4F1;
+    --bg-muted:       #ECEAE6;
+    --border-light:   #E0DDD8;
+    --border-mid:     #C8C5BF;
+    --text-primary:   #1A1916;
+    --text-secondary: #5C5A55;
+    --text-tertiary:  #9B9893;
+    --accent-blue:    #1A73E8;
+    --accent-blue-bg: #E8F0FE;
+    --accent-blue-mid:#B8CFFE;
+    --amber:          #C97D00;
+    --amber-bg:       #FFF4DC;
+    --amber-border:   #E6A817;
+    --red:            #C62828;
+    --red-bg:         #FFEBEB;
+    --red-border:     #E53935;
+    --green:          #2E7D32;
+    --green-bg:       #E8F5E9;
+    --green-border:   #43A047;
+    --font:           -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    --radius-phone:   40px;
+    --radius-card:    14px;
+    --radius-sm:      8px;
+  }
+
+  /* ── RESET + BASE ──────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg-page); }
+  body {
+    font-family: var(--font);
+    background: var(--bg-page);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 16px 48px;
+    color: var(--text-primary);
+  }
+
+  /* ── PAGE HEADER ───────────────────────────────────────────────── */
+  .page-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .page-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.4px;
+    margin-bottom: 4px;
+  }
+  .page-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* ── SCREEN NAV ────────────────────────────────────────────────── */
+  .nav-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 24px;
+    max-width: 520px;
+  }
+  .nav-btn {
+    font-size: 12px;
+    font-family: var(--font);
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border-mid);
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all .15s;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  .nav-btn:hover { background: var(--bg-muted); color: var(--text-primary); }
+  .nav-btn.active {
+    background: var(--text-primary);
+    color: #fff;
+    border-color: var(--text-primary);
+  }
+
+  /* ── PHONE FRAME ───────────────────────────────────────────────── */
+  .phone-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .phone {
+    width: 340px;
+    background: var(--bg-surface);
+    border-radius: var(--radius-phone);
+    border: 2.5px solid #C0BDB8;
+    overflow: hidden;
+    position: relative;
+    box-shadow:
+      0 0 0 7px var(--bg-page),
+      0 0 0 9px var(--border-light),
+      0 20px 60px rgba(0,0,0,0.12);
+  }
+  .notch {
+    width: 100%;
+    height: 38px;
+    background: var(--bg-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .notch-pill {
+    width: 90px; height: 26px;
+    background: var(--text-primary);
+    border-radius: 20px;
+    opacity: .9;
+  }
+  .screen {
+    height: 630px;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-subtle);
+  }
+  .home-bar {
+    height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-light);
+  }
+  .home-pill {
+    width: 100px; height: 4px;
+    background: var(--text-primary);
+    border-radius: 2px; opacity: .25;
+  }
+
+  /* ── SCREEN LABEL ──────────────────────────────────────────────── */
+  .screen-label {
+    margin-top: 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    text-align: center;
+  }
+
+  /* ── APP BARS ──────────────────────────────────────────────────── */
+  .app-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border-light);
+    background: var(--bg-surface);
+  }
+  .app-bar-title { font-size: 16px; font-weight: 600; color: var(--text-primary); }
+  .icon-btn {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--bg-muted);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: var(--text-secondary); cursor: pointer;
+    border: none; font-family: var(--font);
+  }
+
+  /* ── FEED ──────────────────────────────────────────────────────── */
+  .feed-scroll {
+    height: calc(100% - 100px);
+    overflow-y: auto;
+    padding: 12px;
+    background: var(--bg-subtle);
+  }
+  .compose-row {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+  }
+  .avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--bg-muted); border: 1px solid var(--border-light);
+    flex-shrink: 0;
+  }
+  .compose-input {
+    flex: 1; height: 34px; background: var(--bg-surface);
+    border: 1px solid var(--border-light); border-radius: 20px;
+    display: flex; align-items: center; padding: 0 14px;
+    font-size: 12px; color: var(--text-tertiary);
+  }
+  .post-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .post-header {
+    display: flex; align-items: center; gap: 9px;
+    padding: 12px 12px 8px;
+  }
+  .post-meta .name { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+  .post-meta .time { font-size: 11px; color: var(--text-tertiary); }
+  .post-thumb {
+    height: 130px; background: var(--bg-muted);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; color: var(--text-tertiary);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+  .post-headline {
+    font-size: 13px; font-weight: 600; color: var(--text-primary);
+    padding: 10px 12px 3px; line-height: 1.45;
+  }
+  .post-source {
+    font-size: 11px; color: var(--text-tertiary);
+    padding: 2px 12px 9px;
+  }
+  .post-metrics {
+    display: flex; gap: 14px; padding: 8px 12px;
+    border-top: 1px solid var(--border-light);
+  }
+  .metric { font-size: 11px; color: var(--text-secondary); }
+  .metric strong { color: var(--text-primary); font-weight: 600; }
+  .action-row {
+    display: flex; justify-content: space-around;
+    padding: 6px 0; border-top: 1px solid var(--border-light);
+  }
+  .act {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    font-size: 10px; color: var(--text-secondary); cursor: pointer;
+    padding: 4px 8px; border-radius: var(--radius-sm);
+    transition: background .1s;
+  }
+  .act:hover { background: var(--bg-muted); }
+  .act-icon {
+    width: 32px; height: 32px; border-radius: var(--radius-sm);
+    background: var(--bg-muted); display: flex; align-items: center;
+    justify-content: center; font-size: 15px;
+    border: 1px solid var(--border-light);
+  }
+  .act-icon.blue-btn {
+    background: var(--accent-blue); border-color: var(--accent-blue);
+    color: #fff; font-size: 13px;
+  }
+  .tap-hint {
+    font-size: 10px; color: var(--accent-blue);
+    font-style: italic; text-align: center; padding: 4px 0 8px;
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+  }
+
+  /* ── BOTTOM NAV ────────────────────────────────────────────────── */
+  .bottom-nav {
+    position: absolute; bottom: 30px; left: 0; right: 0; height: 54px;
+    border-top: 1px solid var(--border-light);
+    background: var(--bg-surface);
+    display: flex; justify-content: space-around; align-items: center;
+  }
+  .nav-item {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    font-size: 9px; color: var(--text-tertiary); cursor: pointer;
+  }
+  .nav-ic {
+    width: 24px; height: 24px; border-radius: 6px;
+    background: var(--bg-muted); display: flex; align-items: center;
+    justify-content: center; font-size: 14px;
+  }
+  .nav-ic.active-nav { background: var(--accent-blue-bg); }
+
+  /* ── BOTTOM SHEET ──────────────────────────────────────────────── */
+  .overlay {
+    position: absolute; inset: 0;
+    background: rgba(10,10,10,0.45);
+  }
+  .sheet {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: var(--bg-surface);
+    border-radius: 22px 22px 0 0;
+    border-top: 1px solid var(--border-light);
+    padding-bottom: 44px;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
+  }
+  .sheet-handle {
+    width: 36px; height: 4px; background: var(--border-mid);
+    border-radius: 2px; margin: 10px auto 14px;
+  }
+  .swipe-hint {
+    text-align: right; padding: 0 14px 6px;
+    font-size: 10px; color: var(--accent-blue); font-style: italic;
+  }
+  .badge-circle {
+    width: 68px; height: 68px; border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    margin: 0 auto 14px; font-weight: 600;
+  }
+  .badge-amber-c { background: var(--amber-bg); border: 2px solid var(--amber-border); color: var(--amber); }
+  .badge-red-c   { background: var(--red-bg);   border: 2px solid var(--red-border);   color: var(--red); }
+  .badge-green-c { background: var(--green-bg); border: 2px solid var(--green-border); color: var(--green); }
+  .badge-icon-lg { font-size: 24px; line-height: 1; }
+  .badge-lbl     { font-size: 9px; font-weight: 700; letter-spacing: .04em; margin-top: 2px; }
+  .sheet-body { padding: 0 18px; }
+  .sheet-ttl {
+    font-size: 15px; font-weight: 600; color: var(--text-primary);
+    text-align: center; margin-bottom: 8px;
+  }
+  .sheet-txt {
+    font-size: 12px; color: var(--text-secondary); line-height: 1.55;
+    text-align: center; margin-bottom: 14px;
+  }
+  .annot-row {
+    display: flex; justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .annot-tag {
+    font-size: 9px; color: var(--accent-blue);
+    border: 1px solid var(--accent-blue-mid);
+    background: var(--accent-blue-bg);
+    border-radius: 4px; padding: 2px 6px; font-weight: 500;
+  }
+  .btn-primary {
+    display: block; width: 100%; padding: 13px;
+    background: var(--accent-blue); color: #fff;
+    border: none; border-radius: 11px;
+    font-size: 13px; font-weight: 600; font-family: var(--font);
+    margin-bottom: 9px; cursor: pointer; text-align: center;
+    transition: opacity .15s;
+  }
+  .btn-primary:hover { opacity: .88; }
+  .btn-secondary {
+    display: block; width: 100%; padding: 12px;
+    background: transparent; color: var(--text-secondary);
+    border: 1px solid var(--border-mid);
+    border-radius: 11px; font-size: 13px; font-family: var(--font);
+    cursor: pointer; text-align: center; transition: background .15s;
+  }
+  .btn-secondary:hover { background: var(--bg-muted); }
+  .btn-disabled {
+    display: block; width: 100%; padding: 12px;
+    background: var(--bg-muted); color: var(--text-tertiary);
+    border: none; border-radius: 11px; font-size: 12px;
+    text-align: center; margin-bottom: 6px; cursor: not-allowed;
+  }
+  .countdown-txt {
+    text-align: center; font-size: 11px;
+    color: var(--green); font-weight: 500; margin-top: 10px;
+  }
+
+  /* ── DETAIL VIEW ───────────────────────────────────────────────── */
+  .back-bar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 11px 14px; background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-light); cursor: pointer;
+  }
+  .back-arrow-btn { font-size: 18px; color: var(--text-secondary); }
+  .back-lbl { font-size: 13px; color: var(--text-secondary); }
+  .detail-scroll {
+    height: calc(100% - 50px); overflow-y: auto;
+    padding: 0 13px 60px; background: var(--bg-subtle);
+  }
+  .sec-head {
+    font-size: 10px; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--text-tertiary);
+    margin: 14px 0 6px;
+  }
+  .annot-inline {
+    font-size: 9px; color: var(--accent-blue);
+    font-style: italic; margin-bottom: 6px; display: block;
+  }
+  .org-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 9px 11px; margin-bottom: 6px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .org-name  { font-size: 12px; font-weight: 600; color: var(--text-primary); }
+  .org-stars { font-size: 11px; color: var(--amber-border); }
+  .org-link  { font-size: 10px; color: var(--accent-blue); font-weight: 500; }
+  .chart-wrap {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 10px; margin-bottom: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .chart-bars {
+    display: flex; align-items: flex-end; gap: 4px; height: 64px;
+  }
+  .bar {
+    flex: 1; border-radius: 3px 3px 0 0;
+    background: var(--bg-muted);
+    border: 1px solid var(--border-light);
+    min-height: 4px; transition: height .3s;
+  }
+  .bar.spike { background: var(--red-border); border-color: var(--red-border); }
+  .chart-axis {
+    display: flex; justify-content: space-between;
+    font-size: 9px; color: var(--text-tertiary); margin: 3px 0 3px;
+  }
+  .chart-cap {
+    font-size: 10px; color: var(--text-secondary);
+    line-height: 1.45; margin-bottom: 10px;
+  }
+  .note-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 9px 11px; margin-bottom: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .note-txt { font-size: 11px; color: var(--text-secondary); line-height: 1.45; margin-bottom: 5px; }
+  .note-foot { display: flex; justify-content: space-between; align-items: center; }
+  .note-votes { font-size: 10px; color: var(--text-tertiary); }
+  .note-link  { font-size: 10px; color: var(--accent-blue); font-weight: 500; }
+  .dispute-btn {
+    width: 100%; padding: 12px;
+    border: 1px solid var(--border-mid);
+    border-radius: 11px; background: transparent;
+    color: var(--text-secondary); font-size: 12px;
+    font-family: var(--font); cursor: pointer;
+    margin: 10px 0; text-align: center;
+    transition: background .15s;
+  }
+  .dispute-btn:hover { background: var(--bg-muted); }
+
+  /* ── ADD CONTEXT ───────────────────────────────────────────────── */
+  .ctx-screen {
+    height: calc(100% - 50px); overflow-y: auto;
+    padding: 14px; background: var(--bg-subtle);
+  }
+  .ctx-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 10px; }
+  .ctx-textarea {
+    width: 100%; height: 90px;
+    border: 1px solid var(--border-mid);
+    border-radius: 11px; padding: 11px; font-size: 13px;
+    background: var(--bg-surface); color: var(--text-primary);
+    font-family: var(--font); resize: none; outline: none;
+    transition: border-color .15s;
+  }
+  .ctx-textarea:focus { border-color: var(--accent-blue); }
+  .char-count { font-size: 11px; color: var(--text-tertiary); text-align: right; margin: 4px 0 12px; }
+  .preview-lbl { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; font-weight: 500; }
+  .preview-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 11px; padding: 11px; margin-bottom: 14px;
+  }
+  .preview-tag { font-size: 9px; color: var(--text-tertiary); margin-bottom: 5px; }
+  .preview-note {
+    font-size: 11px; color: var(--text-secondary);
+    border-left: 2.5px solid var(--accent-blue);
+    padding-left: 9px; line-height: 1.5; font-style: italic;
+  }
+
+  /* ── FLOW DIAGRAM ──────────────────────────────────────────────── */
+  .flow-screen {
+    height: 100%; overflow-y: auto;
+    padding: 14px; background: var(--bg-subtle);
+  }
+
+  /* ── GHOST POST (blurred bg) ────────────────────────────────────  */
+  .ghost-post {
+    opacity: 0.18; pointer-events: none;
+    padding: 12px; background: var(--bg-subtle);
+  }
+
+  /* ── DETAIL HERO ────────────────────────────────────────────────── */
+  .detail-hero {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 0 10px;
+  }
+  .hero-badge {
+    width: 48px; height: 48px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+    background: var(--red-bg); border: 2px solid var(--red-border);
+    color: var(--red);
+  }
+  .hero-ttl { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+  .hero-sub  { font-size: 11px; color: var(--red); margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-title">VerifyFirst — Inline Pre-Share Credibility Layer</div>
+  <div class="page-subtitle">Lo-fi wireframes · Mobile UX case study</div>
+</div>
+
+<div class="nav-row">
+  <button class="nav-btn active" onclick="show(0)">1 · Feed</button>
+  <button class="nav-btn" onclick="show(1)">2 · Amber</button>
+  <button class="nav-btn" onclick="show(2)">2b · Red</button>
+  <button class="nav-btn" onclick="show(3)">2c · Green</button>
+  <button class="nav-btn" onclick="show(4)">3 · Detail</button>
+  <button class="nav-btn" onclick="show(5)">4 · Context</button>
+  <button class="nav-btn" onclick="show(6)">Flow Diagram</button>
+</div>
+
+<div class="phone-wrap">
+  <div class="phone">
+    <div class="notch"><div class="notch-pill"></div></div>
+    <div class="screen" id="screen-wrap">
+
+      <!-- ═══ SCREEN 1 — FEED ═══════════════════════════════════════ -->
+      <div id="s0">
+        <div class="app-bar">
+          <button class="icon-btn">☰</button>
+          <div class="app-bar-title">For You</div>
+          <button class="icon-btn">🔔</button>
+        </div>
+        <div class="feed-scroll">
+          <div class="compose-row">
+            <div class="avatar"></div>
+            <div class="compose-input">What's on your mind?</div>
+          </div>
+
+          <!-- Main post -->
+          <div class="post-card">
+            <div class="post-header">
+              <div class="avatar"></div>
+              <div class="post-meta">
+                <div class="name">HealthAlert_News</div>
+                <div class="time">2 min ago · trending</div>
+              </div>
+              <span style="color:var(--text-tertiary);font-size:18px;cursor:pointer">···</span>
+            </div>
+            <div class="post-thumb">[ Article thumbnail ]</div>
+            <div class="post-headline">BREAKING: New study shows common vaccine causes 40% spike in heart risk — health officials silent</div>
+            <div class="post-source">healthalert-news.net · External link</div>
+            <div class="post-metrics">
+              <div class="metric"><strong>14.2K</strong> shares</div>
+              <div class="metric"><strong>8.9K</strong> likes</div>
+              <div class="metric"><strong>2.1K</strong> comments</div>
+            </div>
+            <div class="action-row">
+              <div class="act"><div class="act-icon">♡</div><span>Like</span></div>
+              <div class="act"><div class="act-icon">💬</div><span>Comment</span></div>
+              <div class="act" onclick="show(1)" style="color:var(--accent-blue);font-weight:600">
+                <div class="act-icon blue-btn">↗</div><span>Share</span>
+              </div>
+              <div class="act"><div class="act-icon">⚑</div><span>Flag</span></div>
+            </div>
+          </div>
+          <div class="tap-hint">↑ Tap to initiate sharing</div>
+
+          <!-- Ghost post 2 -->
+          <div class="post-card" style="opacity:.3">
+            <div class="post-header">
+              <div class="avatar"></div>
+              <div class="post-meta"><div class="name">TechDaily</div><div class="time">18 min ago</div></div>
+            </div>
+            <div style="height:36px;background:var(--bg-muted);margin:0 12px 12px;border-radius:6px"></div>
+          </div>
+        </div>
+
+        <div class="bottom-nav">
+          <div class="nav-item"><div class="nav-ic active-nav">⌂</div>Home</div>
+          <div class="nav-item"><div class="nav-ic">🔍</div>Search</div>
+          <div class="nav-item"><div class="nav-ic">＋</div>Post</div>
+          <div class="nav-item"><div class="nav-ic">🔔</div>Alerts</div>
+          <div class="nav-item"><div class="nav-ic">👤</div>Me</div>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 2 — AMBER ══════════════════════════════════════ -->
+      <div id="s1" style="display:none">
+        <div class="app-bar">
+          <button class="icon-btn">☰</button>
+          <div class="app-bar-title">For You</div>
+          <button class="icon-btn">🔔</button>
+        </div>
+        <div class="ghost-post">
+          <div class="post-card">
+            <div class="post-header">
+              <div class="avatar"></div>
+              <div class="post-meta"><div class="name">HealthAlert_News</div><div class="time">2 min ago</div></div>
+            </div>
+            <div class="post-headline">BREAKING: New study shows common vaccine causes 40% spike in heart risk…</div>
+          </div>
+        </div>
+        <div class="overlay"></div>
+        <div class="sheet">
+          <div class="sheet-handle"></div>
+          <div class="swipe-hint">← Swipe to dismiss</div>
+          <div class="badge-circle badge-amber-c">
+            <div class="badge-icon-lg">⚠</div>
+            <div class="badge-lbl">Disputed</div>
+          </div>
+          <div class="sheet-body">
+            <div class="sheet-ttl">Credibility Check</div>
+            <div class="sheet-txt">This claim has been disputed by 3 independent fact-checkers in the last 6 hours. The underlying study has not been peer-reviewed.</div>
+            <div class="annot-row">
+              <span class="annot-tag">Primary action</span>
+              <span class="annot-tag">Secondary (friction)</span>
+            </div>
+            <button class="btn-primary" onclick="show(4)">See Details</button>
+            <button class="btn-secondary" onclick="show(5)">Share Anyway</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 2b — RED ═══════════════════════════════════════ -->
+      <div id="s2" style="display:none">
+        <div class="app-bar">
+          <button class="icon-btn">☰</button>
+          <div class="app-bar-title">For You</div>
+          <button class="icon-btn">🔔</button>
+        </div>
+        <div class="ghost-post">
+          <div class="post-card">
+            <div class="post-header">
+              <div class="avatar"></div>
+              <div class="post-meta"><div class="name">HealthAlert_News</div><div class="time">2 min ago</div></div>
+            </div>
+            <div class="post-headline">BREAKING: New study shows common vaccine causes 40% spike in heart risk…</div>
+          </div>
+        </div>
+        <div class="overlay" style="background:rgba(10,10,10,0.55)"></div>
+        <div class="sheet" style="border-top:2px solid var(--red-border)">
+          <div class="sheet-handle"></div>
+          <div style="text-align:center;padding:0 14px 6px;font-size:10px;font-weight:700;color:var(--red);letter-spacing:.06em">HIGH FRICTION STATE</div>
+          <div class="badge-circle badge-red-c">
+            <div class="badge-icon-lg" style="font-size:22px;font-weight:700">✕</div>
+            <div class="badge-lbl">False</div>
+          </div>
+          <div class="sheet-body">
+            <div class="sheet-ttl">High Risk Content</div>
+            <div class="sheet-txt">This claim has been rated <strong>FALSE</strong> by multiple credible fact-checking organisations. Sharing may spread harmful misinformation.</div>
+            <button class="btn-primary" onclick="show(4)">See Details</button>
+            <div class="btn-disabled">Share Anyway (scroll to enable)</div>
+            <div style="font-size:10px;color:var(--text-tertiary);text-align:center;margin-top:2px;font-style:italic">Sharing disabled · scroll panel to unlock</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 2c — GREEN ═════════════════════════════════════ -->
+      <div id="s3" style="display:none">
+        <div class="app-bar">
+          <button class="icon-btn">☰</button>
+          <div class="app-bar-title">For You</div>
+          <button class="icon-btn">🔔</button>
+        </div>
+        <div class="ghost-post" style="opacity:.2">
+          <div class="post-card">
+            <div class="post-header">
+              <div class="avatar"></div>
+              <div class="post-meta"><div class="name">HealthAlert_News</div><div class="time">2 min ago</div></div>
+            </div>
+            <div class="post-headline">WHO confirms vaccine safety after comprehensive global trial review…</div>
+          </div>
+        </div>
+        <div class="overlay" style="background:rgba(10,10,10,0.2)"></div>
+        <div class="sheet" style="border-top:2px solid var(--green-border)">
+          <div class="sheet-handle"></div>
+          <div class="badge-circle badge-green-c">
+            <div class="badge-icon-lg" style="font-size:22px;font-weight:700">✓</div>
+            <div class="badge-lbl">Verified</div>
+          </div>
+          <div class="sheet-body">
+            <div class="sheet-ttl">Content Verified</div>
+            <div class="sheet-txt">This content has been independently verified by trusted fact-checking organisations.</div>
+            <div class="countdown-txt">⏱ Auto-sharing in 2 seconds…</div>
+            <div style="height:12px"></div>
+            <button class="btn-primary" style="background:var(--green)">Share Now</button>
+            <button class="btn-secondary">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 3 — DETAIL ═════════════════════════════════════ -->
+      <div id="s4" style="display:none;height:100%;overflow-y:auto;background:var(--bg-subtle)">
+        <div class="back-bar" onclick="show(1)">
+          <span class="back-arrow-btn">←</span>
+          <span class="back-lbl">Back to post</span>
+        </div>
+        <div class="detail-scroll">
+          <div class="detail-hero">
+            <div class="hero-badge">⚠</div>
+            <div>
+              <div class="hero-ttl">Credibility Breakdown</div>
+              <div class="hero-sub">High-risk content · 3 disputes flagged</div>
+            </div>
+          </div>
+
+          <div class="sec-head">A — Flagging Organisations</div>
+          <span class="annot-inline">Evidence source ↗</span>
+          <div class="org-card">
+            <div><div class="org-name">Reuters Fact Check</div><div class="org-stars">★★★★★</div></div>
+            <div class="org-link">View source →</div>
+          </div>
+          <div class="org-card">
+            <div><div class="org-name">AP Health Desk</div><div class="org-stars">★★★★☆</div></div>
+            <div class="org-link">View source →</div>
+          </div>
+          <div class="org-card">
+            <div><div class="org-name">WHO Media Hub</div><div class="org-stars">★★★★★</div></div>
+            <div class="org-link">View source →</div>
+          </div>
+
+          <div class="sec-head">B — Share Velocity (12h)</div>
+          <span class="annot-inline">Viral spike insight ↗</span>
+          <div class="chart-wrap">
+            <div class="chart-bars">
+              <div class="bar" style="height:10%"></div>
+              <div class="bar" style="height:14%"></div>
+              <div class="bar spike" style="height:92%"></div>
+              <div class="bar spike" style="height:100%"></div>
+              <div class="bar" style="height:62%"></div>
+              <div class="bar" style="height:38%"></div>
+              <div class="bar" style="height:28%"></div>
+              <div class="bar" style="height:20%"></div>
+              <div class="bar" style="height:16%"></div>
+              <div class="bar" style="height:12%"></div>
+              <div class="bar" style="height:9%"></div>
+              <div class="bar" style="height:7%"></div>
+            </div>
+            <div class="chart-axis"><span>0h</span><span>6h</span><span>12h</span></div>
+          </div>
+          <div class="chart-cap">Rapid sharing within 2 hours is a common misinformation pattern. Red bars indicate early spike window.</div>
+
+          <div class="sec-head">C — Community Notes</div>
+          <span class="annot-inline">Community validation ↗</span>
+          <div class="note-card">
+            <div class="note-txt">The cited "study" is a preprint blog post, not a peer-reviewed paper. The 40% figure is misrepresented from raw data.</div>
+            <div class="note-foot"><span class="note-link">Read more</span><span class="note-votes">▲ 412 helpful</span></div>
+          </div>
+          <div class="note-card">
+            <div class="note-txt">Multiple cardiologists responded publicly. No clinical evidence supports this claim. See bmj.com/response</div>
+            <div class="note-foot"><span class="note-link">Read more</span><span class="note-votes">▲ 287 helpful</span></div>
+          </div>
+          <div class="note-card">
+            <div class="note-txt">The source domain was registered 3 weeks ago. Domain history suggests coordinated inauthentic behaviour.</div>
+            <div class="note-foot"><span class="note-link">Read more</span><span class="note-votes">▲ 194 helpful</span></div>
+          </div>
+
+          <div class="sec-head">D — Dispute Assessment</div>
+          <button class="dispute-btn">Disagree with this assessment?</button>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 4 — ADD CONTEXT ════════════════════════════════ -->
+      <div id="s5" style="display:none;height:100%;background:var(--bg-subtle)">
+        <div class="app-bar">
+          <button class="icon-btn" onclick="show(1)">←</button>
+          <div class="app-bar-title">Add Context</div>
+          <div style="width:30px"></div>
+        </div>
+        <div class="ctx-screen">
+          <div class="ctx-desc">Add a note to help others evaluate this claim before it appears in their feed.</div>
+          <span class="annot-inline">User adds corrective context ↗</span>
+          <textarea class="ctx-textarea">This story misrepresents a preprint study. The 40% figure refers to a small subgroup and has not been peer-reviewed or replicated.</textarea>
+          <div class="char-count">120 / 280</div>
+          <div class="preview-lbl">Preview — how others will see your note:</div>
+          <div class="preview-box">
+            <div class="preview-tag">Context note attached by user</div>
+            <div class="preview-note">This story misrepresents a preprint study. The 40% figure refers to a small subgroup and has not been peer-reviewed or replicated.</div>
+          </div>
+          <button class="btn-primary">Attach &amp; Share</button>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 5 — FLOW DIAGRAM ═══════════════════════════════ -->
+      <div id="s6" style="display:none;height:100%;background:var(--bg-subtle)">
+        <div class="app-bar">
+          <div style="width:30px"></div>
+          <div class="app-bar-title" style="font-size:13px">UX Flow — VerifyFirst</div>
+          <div style="width:30px"></div>
+        </div>
+        <div class="flow-screen">
+          <svg width="100%" viewBox="0 0 314 510">
+            <defs>
+              <marker id="ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="#1A73E8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </marker>
+              <marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M2 1L8 5L2 9" fill="none" stroke="#9B9893" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </marker>
+            </defs>
+
+            <!-- Screen 1: Feed -->
+            <rect x="107" y="12" width="100" height="78" rx="12" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+            <text x="157" y="36" text-anchor="middle" font-size="12" font-weight="600" fill="#0D47A1" font-family="-apple-system,sans-serif">Feed View</text>
+            <rect x="119" y="44" width="76" height="7" rx="3" fill="#B8CFFE"/>
+            <rect x="119" y="55" width="52" height="7" rx="3" fill="#B8CFFE"/>
+            <rect x="119" y="67" width="76" height="14" rx="5" fill="#1A73E8"/>
+            <text x="157" y="77" text-anchor="middle" font-size="9" fill="#fff" font-family="-apple-system,sans-serif">Share →</text>
+
+            <!-- Arrow 1→2 -->
+            <line x1="157" y1="90" x2="157" y2="132" stroke="#1A73E8" stroke-width="1.5" marker-end="url(#ab)"/>
+            <text x="166" y="114" font-size="9" fill="#1A73E8" font-family="-apple-system,sans-serif">tap share</text>
+
+            <!-- Screen 2: Panel -->
+            <rect x="107" y="132" width="100" height="78" rx="12" fill="#FFF4DC" stroke="#E6A817" stroke-width="1.5"/>
+            <text x="157" y="156" text-anchor="middle" font-size="12" font-weight="600" fill="#9A6A00" font-family="-apple-system,sans-serif">Credibility</text>
+            <text x="157" y="170" text-anchor="middle" font-size="12" font-weight="600" fill="#9A6A00" font-family="-apple-system,sans-serif">Panel</text>
+            <circle cx="157" cy="186" r="10" fill="none" stroke="#E6A817" stroke-width="1.5"/>
+            <text x="157" y="190" text-anchor="middle" font-size="11" fill="#C97D00" font-family="-apple-system,sans-serif">⚠</text>
+
+            <!-- Arrow 2→Detail -->
+            <line x1="207" y1="168" x2="250" y2="168" stroke="#1A73E8" stroke-width="1.5" marker-end="url(#ab)"/>
+            <text x="228" y="160" text-anchor="middle" font-size="9" fill="#1A73E8" font-family="-apple-system,sans-serif">see details</text>
+
+            <!-- Screen 3: Detail -->
+            <rect x="208" y="132" width="94" height="78" rx="12" fill="#F0F4FF" stroke="#1A73E8" stroke-width="1"/>
+            <text x="255" y="155" text-anchor="middle" font-size="11" font-weight="600" fill="#1A73E8" font-family="-apple-system,sans-serif">Detail</text>
+            <text x="255" y="168" text-anchor="middle" font-size="11" font-weight="600" fill="#1A73E8" font-family="-apple-system,sans-serif">View</text>
+            <rect x="220" y="176" width="66" height="5" rx="2" fill="#B8CFFE"/>
+            <rect x="220" y="185" width="48" height="5" rx="2" fill="#B8CFFE"/>
+            <rect x="220" y="194" width="60" height="5" rx="2" fill="#B8CFFE"/>
+
+            <!-- Back: Detail→Panel -->
+            <path d="M210 144 Q186 134 186 134 L164 134" stroke="#9B9893" stroke-width="1" stroke-dasharray="3 2" fill="none" marker-end="url(#ag)"/>
+            <text x="184" y="128" font-size="8" fill="#9B9893" font-family="-apple-system,sans-serif" text-anchor="middle">back</text>
+
+            <!-- Arrow 2→Context -->
+            <line x1="157" y1="210" x2="157" y2="300" stroke="#1A73E8" stroke-width="1.5" marker-end="url(#ab)"/>
+            <text x="168" y="258" font-size="9" fill="#1A73E8" font-family="-apple-system,sans-serif">share anyway</text>
+
+            <!-- Screen 4: Context -->
+            <rect x="107" y="300" width="100" height="78" rx="12" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5"/>
+            <text x="157" y="326" text-anchor="middle" font-size="12" font-weight="600" fill="#1B5E20" font-family="-apple-system,sans-serif">Add</text>
+            <text x="157" y="340" text-anchor="middle" font-size="12" font-weight="600" fill="#1B5E20" font-family="-apple-system,sans-serif">Context</text>
+            <rect x="119" y="350" width="76" height="16" rx="5" fill="#43A047"/>
+            <text x="157" y="361" text-anchor="middle" font-size="9" fill="#fff" font-family="-apple-system,sans-serif">Attach &amp; Share</text>
+
+            <!-- Legend -->
+            <rect x="12" y="420" width="290" height="76" rx="10" fill="#FFFFFF" stroke="#E0DDD8" stroke-width="1"/>
+            <text x="157" y="440" text-anchor="middle" font-size="10" font-weight="600" fill="#5C5A55" font-family="-apple-system,sans-serif">Navigation key</text>
+            <line x1="30" y1="456" x2="68" y2="456" stroke="#1A73E8" stroke-width="1.5" marker-end="url(#ab)"/>
+            <text x="76" y="460" font-size="9" fill="#5C5A55" font-family="-apple-system,sans-serif">Primary flow</text>
+            <line x1="30" y1="476" x2="68" y2="476" stroke="#9B9893" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#ag)"/>
+            <text x="76" y="480" font-size="9" fill="#5C5A55" font-family="-apple-system,sans-serif">Back navigation</text>
+          </svg>
+        </div>
+      </div>
+
+    </div><!-- /screen-wrap -->
+    <div class="home-bar"><div class="home-pill"></div></div>
+  </div>
+  <div class="screen-label" id="screen-label-txt">Screen 1 — Feed View</div>
+</div>
+
+<script>
+  const screens = ['s0','s1','s2','s3','s4','s5','s6'];
+  const labels  = [
+    'Screen 1 — Feed View',
+    'Screen 2 — Credibility Panel (Amber)',
+    'Screen 2b — High Risk (Red)',
+    'Screen 2c — Verified (Green)',
+    'Screen 3 — Detail View',
+    'Screen 4 — Add Context',
+    'Flow Diagram'
+  ];
+  const btns = document.querySelectorAll('.nav-btn');
+  function show(i) {
+    screens.forEach((id, j) => {
+      document.getElementById(id).style.display = j === i ? '' : 'none';
+    });
+    btns.forEach((b, j) => b.classList.toggle('active', j === i));
+    document.getElementById('screen-label-txt').textContent = labels[i];
+  }
+</script>
+</body>
+</html>
