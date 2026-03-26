@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VerifyFirst — Wireframes</title>
+<title>VerifyFirst — Wireframes (Fixed)</title>
 <style>
   /* ── DESIGN TOKENS ─────────────────────────────────────────────── */
   :root {
@@ -34,7 +34,6 @@
     --radius-sm:      8px;
   }
 
-  /* ── RESET + BASE ──────────────────────────────────────────────── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { background: var(--bg-page); }
   body {
@@ -49,118 +48,77 @@
   }
 
   /* ── PAGE HEADER ───────────────────────────────────────────────── */
-  .page-header {
-    text-align: center;
-    margin-bottom: 28px;
+  .page-header { text-align: center; margin-bottom: 16px; }
+  .page-title { font-size: 22px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.4px; margin-bottom: 4px; }
+  .page-subtitle { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; }
+
+  /* ── FIX BADGES ─────────────────────────────────────────────────── */
+  .fix-legend {
+    display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
+    margin-bottom: 20px; max-width: 520px;
   }
-  .page-title {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: -0.4px;
-    margin-bottom: 4px;
+  .fix-badge {
+    font-size: 10px; font-weight: 600; padding: 4px 10px;
+    border-radius: 20px; letter-spacing: .04em;
   }
-  .page-subtitle {
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
+  .fix-badge.i1 { background: #FFF4DC; color: #9A6A00; border: 1px solid #E6A817; }
+  .fix-badge.i2 { background: #E8F5E9; color: #1B5E20; border: 1px solid #43A047; }
+  .fix-badge.i3 { background: #E8F0FE; color: #0D47A1; border: 1px solid #1A73E8; }
 
   /* ── SCREEN NAV ────────────────────────────────────────────────── */
   .nav-row {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 24px;
-    max-width: 520px;
+    display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;
+    margin-bottom: 24px; max-width: 520px;
   }
   .nav-btn {
-    font-size: 12px;
-    font-family: var(--font);
-    padding: 7px 14px;
-    border-radius: 20px;
-    border: 1px solid var(--border-mid);
-    background: var(--bg-surface);
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all .15s;
-    white-space: nowrap;
-    font-weight: 500;
+    font-size: 12px; font-family: var(--font); padding: 7px 14px;
+    border-radius: 20px; border: 1px solid var(--border-mid);
+    background: var(--bg-surface); color: var(--text-secondary);
+    cursor: pointer; transition: all .15s; white-space: nowrap; font-weight: 500;
   }
   .nav-btn:hover { background: var(--bg-muted); color: var(--text-primary); }
-  .nav-btn.active {
-    background: var(--text-primary);
-    color: #fff;
-    border-color: var(--text-primary);
-  }
+  .nav-btn.active { background: var(--text-primary); color: #fff; border-color: var(--text-primary); }
 
   /* ── PHONE FRAME ───────────────────────────────────────────────── */
-  .phone-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; }
   .phone {
-    width: 340px;
-    background: var(--bg-surface);
-    border-radius: var(--radius-phone);
-    border: 2.5px solid #C0BDB8;
-    overflow: hidden;
-    position: relative;
-    box-shadow:
-      0 0 0 7px var(--bg-page),
-      0 0 0 9px var(--border-light),
-      0 20px 60px rgba(0,0,0,0.12);
+    width: 340px; background: var(--bg-surface);
+    border-radius: var(--radius-phone); border: 2.5px solid #C0BDB8;
+    overflow: hidden; position: relative;
+    box-shadow: 0 0 0 7px var(--bg-page), 0 0 0 9px var(--border-light), 0 20px 60px rgba(0,0,0,0.12);
   }
   .notch {
-    width: 100%;
-    height: 38px;
-    background: var(--bg-surface);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%; height: 38px; background: var(--bg-surface);
+    display: flex; align-items: center; justify-content: center;
     border-bottom: 1px solid var(--border-light);
   }
-  .notch-pill {
-    width: 90px; height: 26px;
-    background: var(--text-primary);
-    border-radius: 20px;
-    opacity: .9;
-  }
-  .screen {
-    height: 630px;
-    overflow: hidden;
-    position: relative;
-    background: var(--bg-subtle);
-  }
+  .notch-pill { width: 90px; height: 26px; background: var(--text-primary); border-radius: 20px; opacity: .9; }
+  .screen { height: 630px; overflow: hidden; position: relative; background: var(--bg-subtle); }
   .home-bar {
-    height: 30px;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--bg-surface);
-    border-top: 1px solid var(--border-light);
+    height: 30px; display: flex; align-items: center; justify-content: center;
+    background: var(--bg-surface); border-top: 1px solid var(--border-light);
   }
-  .home-pill {
-    width: 100px; height: 4px;
-    background: var(--text-primary);
-    border-radius: 2px; opacity: .25;
+  .home-pill { width: 100px; height: 4px; background: var(--text-primary); border-radius: 2px; opacity: .25; }
+  .screen-label {
+    margin-top: 16px; font-size: 11px; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--text-tertiary); text-align: center;
   }
 
-  /* ── SCREEN LABEL ──────────────────────────────────────────────── */
-  .screen-label {
-    margin-top: 16px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-    text-align: center;
+  /* ── FIX CALLOUT STRIP ──────────────────────────────────────────── */
+  .fix-strip {
+    margin-top: 12px; max-width: 340px; width: 100%;
+    padding: 9px 13px; border-radius: 10px;
+    font-size: 11px; line-height: 1.5; font-weight: 500;
   }
+  .fix-strip.i1 { background: #FFF4DC; color: #9A6A00; border: 1px solid #E6A817; }
+  .fix-strip.i2 { background: #E8F5E9; color: #1B5E20; border: 1px solid #43A047; }
+  .fix-strip.i3 { background: #E8F0FE; color: #0D47A1; border: 1px solid #1A73E8; }
+  .fix-strip strong { display: block; margin-bottom: 2px; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; }
 
   /* ── APP BARS ──────────────────────────────────────────────────── */
   .app-bar {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 11px 16px;
-    border-bottom: 1px solid var(--border-light);
+    padding: 11px 16px; border-bottom: 1px solid var(--border-light);
     background: var(--bg-surface);
   }
   .app-bar-title { font-size: 16px; font-weight: 600; color: var(--text-primary); }
@@ -174,19 +132,11 @@
 
   /* ── FEED ──────────────────────────────────────────────────────── */
   .feed-scroll {
-    height: calc(100% - 100px);
-    overflow-y: auto;
-    padding: 12px;
-    background: var(--bg-subtle);
+    height: calc(100% - 100px); overflow-y: auto;
+    padding: 12px; background: var(--bg-subtle);
   }
-  .compose-row {
-    display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
-  }
-  .avatar {
-    width: 34px; height: 34px; border-radius: 50%;
-    background: var(--bg-muted); border: 1px solid var(--border-light);
-    flex-shrink: 0;
-  }
+  .compose-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--bg-muted); border: 1px solid var(--border-light); flex-shrink: 0; }
   .compose-input {
     flex: 1; height: 34px; background: var(--bg-surface);
     border: 1px solid var(--border-light); border-radius: 20px;
@@ -194,38 +144,38 @@
     font-size: 12px; color: var(--text-tertiary);
   }
   .post-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    margin-bottom: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    background: var(--bg-surface); border: 1px solid var(--border-light);
+    border-radius: var(--radius-card); overflow: hidden;
+    margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
-  .post-header {
-    display: flex; align-items: center; gap: 9px;
-    padding: 12px 12px 8px;
-  }
+  .post-header { display: flex; align-items: center; gap: 9px; padding: 12px 12px 8px; }
   .post-meta .name { font-size: 13px; font-weight: 600; color: var(--text-primary); }
   .post-meta .time { font-size: 11px; color: var(--text-tertiary); }
   .post-thumb {
-    height: 130px; background: var(--bg-muted);
+    height: 100px; background: var(--bg-muted);
     display: flex; align-items: center; justify-content: center;
     font-size: 11px; color: var(--text-tertiary);
     border-top: 1px solid var(--border-light);
     border-bottom: 1px solid var(--border-light);
   }
-  .post-headline {
-    font-size: 13px; font-weight: 600; color: var(--text-primary);
-    padding: 10px 12px 3px; line-height: 1.45;
+  .post-headline { font-size: 13px; font-weight: 600; color: var(--text-primary); padding: 10px 12px 3px; line-height: 1.45; }
+  .post-source { font-size: 11px; color: var(--text-tertiary); padding: 2px 12px 6px; }
+
+  /* ── ISSUE 3 FIX — Inline credibility pill ───────────────────────
+     Proactive badge shown directly on feed card before any interaction.
+     Eliminates the "anchor effect" where users absorb false info first. */
+  .cred-pill-row { padding: 0 12px 8px; display: flex; align-items: center; gap: 6px; }
+  .cred-pill {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 10px; font-weight: 600; padding: 3px 8px;
+    border-radius: 20px; letter-spacing: .03em;
   }
-  .post-source {
-    font-size: 11px; color: var(--text-tertiary);
-    padding: 2px 12px 9px;
-  }
-  .post-metrics {
-    display: flex; gap: 14px; padding: 8px 12px;
-    border-top: 1px solid var(--border-light);
-  }
+  .cred-pill.amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .cred-pill.red   { background: var(--red-bg);   color: var(--red);   border: 1px solid var(--red-border); }
+  .cred-pill.green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .cred-pill-tap   { font-size: 10px; color: var(--accent-blue); font-style: italic; }
+
+  .post-metrics { display: flex; gap: 14px; padding: 8px 12px; border-top: 1px solid var(--border-light); }
   .metric { font-size: 11px; color: var(--text-secondary); }
   .metric strong { color: var(--text-primary); font-weight: 600; }
   .action-row {
@@ -235,65 +185,41 @@
   .act {
     display: flex; flex-direction: column; align-items: center; gap: 3px;
     font-size: 10px; color: var(--text-secondary); cursor: pointer;
-    padding: 4px 8px; border-radius: var(--radius-sm);
-    transition: background .1s;
+    padding: 4px 8px; border-radius: var(--radius-sm); transition: background .1s;
   }
   .act:hover { background: var(--bg-muted); }
   .act-icon {
     width: 32px; height: 32px; border-radius: var(--radius-sm);
     background: var(--bg-muted); display: flex; align-items: center;
-    justify-content: center; font-size: 15px;
-    border: 1px solid var(--border-light);
+    justify-content: center; font-size: 15px; border: 1px solid var(--border-light);
   }
-  .act-icon.blue-btn {
-    background: var(--accent-blue); border-color: var(--accent-blue);
-    color: #fff; font-size: 13px;
-  }
+  .act-icon.blue-btn { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; font-size: 13px; }
   .tap-hint {
-    font-size: 10px; color: var(--accent-blue);
-    font-style: italic; text-align: center; padding: 4px 0 8px;
+    font-size: 10px; color: var(--accent-blue); font-style: italic;
+    text-align: center; padding: 4px 0 8px;
     display: flex; align-items: center; justify-content: center; gap: 4px;
   }
 
   /* ── BOTTOM NAV ────────────────────────────────────────────────── */
   .bottom-nav {
     position: absolute; bottom: 30px; left: 0; right: 0; height: 54px;
-    border-top: 1px solid var(--border-light);
-    background: var(--bg-surface);
+    border-top: 1px solid var(--border-light); background: var(--bg-surface);
     display: flex; justify-content: space-around; align-items: center;
   }
-  .nav-item {
-    display: flex; flex-direction: column; align-items: center; gap: 2px;
-    font-size: 9px; color: var(--text-tertiary); cursor: pointer;
-  }
-  .nav-ic {
-    width: 24px; height: 24px; border-radius: 6px;
-    background: var(--bg-muted); display: flex; align-items: center;
-    justify-content: center; font-size: 14px;
-  }
+  .nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 9px; color: var(--text-tertiary); cursor: pointer; }
+  .nav-ic { width: 24px; height: 24px; border-radius: 6px; background: var(--bg-muted); display: flex; align-items: center; justify-content: center; font-size: 14px; }
   .nav-ic.active-nav { background: var(--accent-blue-bg); }
 
   /* ── BOTTOM SHEET ──────────────────────────────────────────────── */
-  .overlay {
-    position: absolute; inset: 0;
-    background: rgba(10,10,10,0.45);
-  }
+  .overlay { position: absolute; inset: 0; background: rgba(10,10,10,0.45); }
   .sheet {
     position: absolute; bottom: 0; left: 0; right: 0;
-    background: var(--bg-surface);
-    border-radius: 22px 22px 0 0;
-    border-top: 1px solid var(--border-light);
-    padding-bottom: 44px;
+    background: var(--bg-surface); border-radius: 22px 22px 0 0;
+    border-top: 1px solid var(--border-light); padding-bottom: 44px;
     box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
   }
-  .sheet-handle {
-    width: 36px; height: 4px; background: var(--border-mid);
-    border-radius: 2px; margin: 10px auto 14px;
-  }
-  .swipe-hint {
-    text-align: right; padding: 0 14px 6px;
-    font-size: 10px; color: var(--accent-blue); font-style: italic;
-  }
+  .sheet-handle { width: 36px; height: 4px; background: var(--border-mid); border-radius: 2px; margin: 10px auto 14px; }
+  .swipe-hint { text-align: right; padding: 0 14px 6px; font-size: 10px; color: var(--accent-blue); font-style: italic; }
   .badge-circle {
     width: 68px; height: 68px; border-radius: 50%;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -305,78 +231,64 @@
   .badge-icon-lg { font-size: 24px; line-height: 1; }
   .badge-lbl     { font-size: 9px; font-weight: 700; letter-spacing: .04em; margin-top: 2px; }
   .sheet-body { padding: 0 18px; }
-  .sheet-ttl {
-    font-size: 15px; font-weight: 600; color: var(--text-primary);
-    text-align: center; margin-bottom: 8px;
-  }
-  .sheet-txt {
-    font-size: 12px; color: var(--text-secondary); line-height: 1.55;
-    text-align: center; margin-bottom: 14px;
-  }
-  .annot-row {
-    display: flex; justify-content: space-between;
-    margin-bottom: 8px;
-  }
+  .sheet-ttl { font-size: 15px; font-weight: 600; color: var(--text-primary); text-align: center; margin-bottom: 8px; }
+  .sheet-txt { font-size: 12px; color: var(--text-secondary); line-height: 1.55; text-align: center; margin-bottom: 14px; }
+  .annot-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
   .annot-tag {
     font-size: 9px; color: var(--accent-blue);
-    border: 1px solid var(--accent-blue-mid);
-    background: var(--accent-blue-bg);
+    border: 1px solid var(--accent-blue-mid); background: var(--accent-blue-bg);
     border-radius: 4px; padding: 2px 6px; font-weight: 500;
   }
   .btn-primary {
     display: block; width: 100%; padding: 13px;
     background: var(--accent-blue); color: #fff;
-    border: none; border-radius: 11px;
-    font-size: 13px; font-weight: 600; font-family: var(--font);
-    margin-bottom: 9px; cursor: pointer; text-align: center;
+    border: none; border-radius: 11px; font-size: 13px; font-weight: 600;
+    font-family: var(--font); margin-bottom: 9px; cursor: pointer; text-align: center;
     transition: opacity .15s;
   }
   .btn-primary:hover { opacity: .88; }
   .btn-secondary {
     display: block; width: 100%; padding: 12px;
     background: transparent; color: var(--text-secondary);
-    border: 1px solid var(--border-mid);
-    border-radius: 11px; font-size: 13px; font-family: var(--font);
-    cursor: pointer; text-align: center; transition: background .15s;
+    border: 1px solid var(--border-mid); border-radius: 11px; font-size: 13px;
+    font-family: var(--font); cursor: pointer; text-align: center; transition: background .15s;
   }
   .btn-secondary:hover { background: var(--bg-muted); }
-  .btn-disabled {
+
+  /* ── ISSUE 1 FIX — Disabled button styles ────────────────────────
+     Greyed-out appearance communicates "not yet actionable" clearly.
+     Prevents user frustration from clicking a dead button. */
+  .btn-disabled-true {
     display: block; width: 100%; padding: 12px;
     background: var(--bg-muted); color: var(--text-tertiary);
-    border: none; border-radius: 11px; font-size: 12px;
+    border: 1px dashed var(--border-mid); border-radius: 11px; font-size: 12px;
     text-align: center; margin-bottom: 6px; cursor: not-allowed;
+    opacity: 0.65; font-family: var(--font);
+    position: relative;
   }
-  .countdown-txt {
-    text-align: center; font-size: 11px;
-    color: var(--green); font-weight: 500; margin-top: 10px;
+  .btn-disabled-tooltip {
+    font-size: 10px; color: var(--text-tertiary); text-align: center;
+    margin-bottom: 8px; font-style: italic;
   }
+
+  .countdown-txt { text-align: center; font-size: 11px; color: var(--green); font-weight: 500; margin-top: 10px; }
 
   /* ── DETAIL VIEW ───────────────────────────────────────────────── */
   .back-bar {
-    display: flex; align-items: center; gap: 8px;
-    padding: 11px 14px; background: var(--bg-surface);
-    border-bottom: 1px solid var(--border-light); cursor: pointer;
+    display: flex; align-items: center; gap: 8px; padding: 11px 14px;
+    background: var(--bg-surface); border-bottom: 1px solid var(--border-light); cursor: pointer;
   }
   .back-arrow-btn { font-size: 18px; color: var(--text-secondary); }
   .back-lbl { font-size: 13px; color: var(--text-secondary); }
-  .detail-scroll {
-    height: calc(100% - 50px); overflow-y: auto;
-    padding: 0 13px 60px; background: var(--bg-subtle);
-  }
+  .detail-scroll { height: calc(100% - 50px); overflow-y: auto; padding: 0 13px 60px; background: var(--bg-subtle); }
   .sec-head {
-    font-size: 10px; font-weight: 700; letter-spacing: .06em;
-    text-transform: uppercase; color: var(--text-tertiary);
-    margin: 14px 0 6px;
+    font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--text-tertiary); margin: 14px 0 6px;
   }
-  .annot-inline {
-    font-size: 9px; color: var(--accent-blue);
-    font-style: italic; margin-bottom: 6px; display: block;
-  }
+  .annot-inline { font-size: 9px; color: var(--accent-blue); font-style: italic; margin-bottom: 6px; display: block; }
   .org-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    padding: 9px 11px; margin-bottom: 6px;
+    background: var(--bg-surface); border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm); padding: 9px 11px; margin-bottom: 6px;
     display: flex; justify-content: space-between; align-items: center;
     box-shadow: 0 1px 2px rgba(0,0,0,0.04);
   }
@@ -384,114 +296,94 @@
   .org-stars { font-size: 11px; color: var(--amber-border); }
   .org-link  { font-size: 10px; color: var(--accent-blue); font-weight: 500; }
   .chart-wrap {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    padding: 10px; margin-bottom: 4px;
+    background: var(--bg-surface); border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm); padding: 10px; margin-bottom: 4px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.04);
   }
-  .chart-bars {
-    display: flex; align-items: flex-end; gap: 4px; height: 64px;
-  }
-  .bar {
-    flex: 1; border-radius: 3px 3px 0 0;
-    background: var(--bg-muted);
-    border: 1px solid var(--border-light);
-    min-height: 4px; transition: height .3s;
-  }
+  .chart-bars { display: flex; align-items: flex-end; gap: 4px; height: 64px; }
+  .bar { flex: 1; border-radius: 3px 3px 0 0; background: var(--bg-muted); border: 1px solid var(--border-light); min-height: 4px; }
   .bar.spike { background: var(--red-border); border-color: var(--red-border); }
-  .chart-axis {
-    display: flex; justify-content: space-between;
-    font-size: 9px; color: var(--text-tertiary); margin: 3px 0 3px;
-  }
-  .chart-cap {
-    font-size: 10px; color: var(--text-secondary);
-    line-height: 1.45; margin-bottom: 10px;
-  }
-  .note-card {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    padding: 9px 11px; margin-bottom: 6px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-  }
+  .chart-axis { display: flex; justify-content: space-between; font-size: 9px; color: var(--text-tertiary); margin: 3px 0; }
+  .chart-cap { font-size: 10px; color: var(--text-secondary); line-height: 1.45; margin-bottom: 10px; }
+  .note-card { background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 9px 11px; margin-bottom: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
   .note-txt { font-size: 11px; color: var(--text-secondary); line-height: 1.45; margin-bottom: 5px; }
   .note-foot { display: flex; justify-content: space-between; align-items: center; }
   .note-votes { font-size: 10px; color: var(--text-tertiary); }
   .note-link  { font-size: 10px; color: var(--accent-blue); font-weight: 500; }
-  .dispute-btn {
-    width: 100%; padding: 12px;
-    border: 1px solid var(--border-mid);
-    border-radius: 11px; background: transparent;
-    color: var(--text-secondary); font-size: 12px;
-    font-family: var(--font); cursor: pointer;
-    margin: 10px 0; text-align: center;
-    transition: background .15s;
-  }
-  .dispute-btn:hover { background: var(--bg-muted); }
 
   /* ── ADD CONTEXT ───────────────────────────────────────────────── */
-  .ctx-screen {
-    height: calc(100% - 50px); overflow-y: auto;
-    padding: 14px; background: var(--bg-subtle);
-  }
+  .ctx-screen { height: calc(100% - 50px); overflow-y: auto; padding: 14px; background: var(--bg-subtle); }
   .ctx-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; margin-bottom: 10px; }
   .ctx-textarea {
-    width: 100%; height: 90px;
-    border: 1px solid var(--border-mid);
+    width: 100%; height: 90px; border: 1px solid var(--border-mid);
     border-radius: 11px; padding: 11px; font-size: 13px;
     background: var(--bg-surface); color: var(--text-primary);
-    font-family: var(--font); resize: none; outline: none;
-    transition: border-color .15s;
+    font-family: var(--font); resize: none; outline: none; transition: border-color .15s;
   }
   .ctx-textarea:focus { border-color: var(--accent-blue); }
   .char-count { font-size: 11px; color: var(--text-tertiary); text-align: right; margin: 4px 0 12px; }
   .preview-lbl { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; font-weight: 500; }
-  .preview-box {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-light);
-    border-radius: 11px; padding: 11px; margin-bottom: 14px;
-  }
+  .preview-box { background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 11px; padding: 11px; margin-bottom: 14px; }
   .preview-tag { font-size: 9px; color: var(--text-tertiary); margin-bottom: 5px; }
-  .preview-note {
-    font-size: 11px; color: var(--text-secondary);
-    border-left: 2.5px solid var(--accent-blue);
-    padding-left: 9px; line-height: 1.5; font-style: italic;
+  .preview-note { font-size: 11px; color: var(--text-secondary); border-left: 2.5px solid var(--accent-blue); padding-left: 9px; line-height: 1.5; font-style: italic; }
+
+  /* ── ISSUE 2 FIX — Success confirmation overlay ──────────────────
+     Full-screen success state gives clear closure after "Attach & Share".
+     Resolves ambiguity about whether the action completed. */
+  .success-overlay {
+    position: absolute; inset: 0; background: var(--bg-surface);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 32px 24px; text-align: center; z-index: 10;
+    animation: fadeIn .35s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .success-icon {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--green-bg); border: 2.5px solid var(--green-border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; margin-bottom: 18px;
+    animation: scaleIn .4s cubic-bezier(.34,1.56,.64,1) .1s both;
+  }
+  @keyframes scaleIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .success-ttl { font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+  .success-sub { font-size: 12px; color: var(--text-secondary); line-height: 1.55; margin-bottom: 24px; }
+  .success-note-preview {
+    background: var(--green-bg); border: 1px solid var(--green-border);
+    border-radius: 10px; padding: 11px 14px; text-align: left; width: 100%;
+    margin-bottom: 22px;
+  }
+  .success-note-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--green); margin-bottom: 5px; }
+  .success-note-text  { font-size: 11px; color: var(--green); line-height: 1.5; font-style: italic; border-left: 2.5px solid var(--green-border); padding-left: 8px; }
+  .success-btn-done {
+    width: 100%; padding: 13px; background: var(--green); color: #fff;
+    border: none; border-radius: 11px; font-size: 13px; font-weight: 600;
+    font-family: var(--font); cursor: pointer;
   }
 
-  /* ── FLOW DIAGRAM ──────────────────────────────────────────────── */
-  .flow-screen {
-    height: 100%; overflow-y: auto;
-    padding: 14px; background: var(--bg-subtle);
-  }
-
-  /* ── GHOST POST (blurred bg) ────────────────────────────────────  */
-  .ghost-post {
-    opacity: 0.18; pointer-events: none;
-    padding: 12px; background: var(--bg-subtle);
-  }
+  /* ── GHOST POST ─────────────────────────────────────────────────── */
+  .ghost-post { opacity: 0.18; pointer-events: none; padding: 12px; background: var(--bg-subtle); }
 
   /* ── DETAIL HERO ────────────────────────────────────────────────── */
-  .detail-hero {
-    display: flex; align-items: center; gap: 12px;
-    padding: 14px 0 10px;
-  }
-  .hero-badge {
-    width: 48px; height: 48px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; flex-shrink: 0;
-    background: var(--red-bg); border: 2px solid var(--red-border);
-    color: var(--red);
-  }
+  .detail-hero { display: flex; align-items: center; gap: 12px; padding: 14px 0 10px; }
+  .hero-badge { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; background: var(--red-bg); border: 2px solid var(--red-border); color: var(--red); }
   .hero-ttl { font-size: 14px; font-weight: 600; color: var(--text-primary); }
   .hero-sub  { font-size: 11px; color: var(--red); margin-top: 2px; }
+
+  /* ── FLOW ───────────────────────────────────────────────────────── */
+  .flow-screen { height: 100%; overflow-y: auto; padding: 14px; background: var(--bg-subtle); }
 </style>
 </head>
 <body>
 
 <div class="page-header">
   <div class="page-title">VerifyFirst — Inline Pre-Share Credibility Layer</div>
-  <div class="page-subtitle">Lo-fi wireframes · Mobile UX case study</div>
+  <div class="page-subtitle">Lo-fi wireframes · 3 usability fixes applied</div>
+</div>
+
+<div class="fix-legend">
+  <span class="fix-badge i1">Fix 1 · Disabled Buttons</span>
+  <span class="fix-badge i2">Fix 2 · Success Confirmation</span>
+  <span class="fix-badge i3">Fix 3 · Proactive Feed Badges</span>
 </div>
 
 <div class="nav-row">
@@ -509,7 +401,7 @@
     <div class="notch"><div class="notch-pill"></div></div>
     <div class="screen" id="screen-wrap">
 
-      <!-- ═══ SCREEN 1 — FEED ═══════════════════════════════════════ -->
+      <!-- ═══ SCREEN 1 — FEED (Fix 3: proactive inline credibility badges) ═══ -->
       <div id="s0">
         <div class="app-bar">
           <button class="icon-btn">☰</button>
@@ -522,7 +414,7 @@
             <div class="compose-input">What's on your mind?</div>
           </div>
 
-          <!-- Main post -->
+          <!-- Main post — amber credibility pill shown proactively -->
           <div class="post-card">
             <div class="post-header">
               <div class="avatar"></div>
@@ -535,6 +427,11 @@
             <div class="post-thumb">[ Article thumbnail ]</div>
             <div class="post-headline">BREAKING: New study shows common vaccine causes 40% spike in heart risk — health officials silent</div>
             <div class="post-source">healthalert-news.net · External link</div>
+            <!-- FIX 3: Credibility pill displayed directly in feed, before any tap -->
+            <div class="cred-pill-row">
+              <span class="cred-pill amber">⚠ Disputed</span>
+              <span class="cred-pill-tap">Tap for details →</span>
+            </div>
             <div class="post-metrics">
               <div class="metric"><strong>14.2K</strong> shares</div>
               <div class="metric"><strong>8.9K</strong> likes</div>
@@ -549,15 +446,19 @@
               <div class="act"><div class="act-icon">⚑</div><span>Flag</span></div>
             </div>
           </div>
-          <div class="tap-hint">↑ Tap to initiate sharing</div>
+          <div class="tap-hint">↑ Tap Share to see credibility check</div>
 
-          <!-- Ghost post 2 -->
-          <div class="post-card" style="opacity:.3">
+          <!-- Second post — green verified pill -->
+          <div class="post-card" style="opacity:.75">
             <div class="post-header">
               <div class="avatar"></div>
               <div class="post-meta"><div class="name">TechDaily</div><div class="time">18 min ago</div></div>
             </div>
-            <div style="height:36px;background:var(--bg-muted);margin:0 12px 12px;border-radius:6px"></div>
+            <div style="height:28px;background:var(--bg-muted);margin:0 12px 6px;border-radius:6px"></div>
+            <!-- FIX 3: Verified badge also shows proactively for verified content -->
+            <div class="cred-pill-row">
+              <span class="cred-pill green">✓ Verified</span>
+            </div>
           </div>
         </div>
 
@@ -635,8 +536,9 @@
             <div class="sheet-ttl">High Risk Content</div>
             <div class="sheet-txt">This claim has been rated <strong>FALSE</strong> by multiple credible fact-checking organisations. Sharing may spread harmful misinformation.</div>
             <button class="btn-primary" onclick="show(4)">See Details</button>
-            <div class="btn-disabled">Share Anyway (scroll to enable)</div>
-            <div style="font-size:10px;color:var(--text-tertiary);text-align:center;margin-top:2px;font-style:italic">Sharing disabled · scroll panel to unlock</div>
+            <!-- FIX 1: Sharing is visually disabled with dashed border + tooltip — not a dead silent button -->
+            <div class="btn-disabled-true">Share Anyway (scroll panel to unlock)</div>
+            <div class="btn-disabled-tooltip">⚠ Read the full details before sharing is enabled</div>
           </div>
         </div>
       </div>
@@ -742,28 +644,44 @@
           </div>
 
           <div class="sec-head">D — Dispute Assessment</div>
-          <button class="dispute-btn">Disagree with this assessment?</button>
+          <!-- FIX 1: Button is greyed/disabled until user has scrolled/read the detail panel -->
+          <div class="btn-disabled-true" style="margin:10px 0">Disagree with this Assessment?</div>
+          <div class="btn-disabled-tooltip">Read all sections above to unlock dispute form</div>
+          <div style="height:10px"></div>
         </div>
       </div>
 
       <!-- ═══ SCREEN 4 — ADD CONTEXT ════════════════════════════════ -->
-      <div id="s5" style="display:none;height:100%;background:var(--bg-subtle)">
+      <div id="s5" style="display:none;height:100%;background:var(--bg-subtle);position:relative">
         <div class="app-bar">
           <button class="icon-btn" onclick="show(1)">←</button>
           <div class="app-bar-title">Add Context</div>
           <div style="width:30px"></div>
         </div>
-        <div class="ctx-screen">
+        <div class="ctx-screen" id="ctx-form">
           <div class="ctx-desc">Add a note to help others evaluate this claim before it appears in their feed.</div>
           <span class="annot-inline">User adds corrective context ↗</span>
-          <textarea class="ctx-textarea">This story misrepresents a preprint study. The 40% figure refers to a small subgroup and has not been peer-reviewed or replicated.</textarea>
+          <textarea class="ctx-textarea" id="ctx-text">This story misrepresents a preprint study. The 40% figure refers to a small subgroup and has not been peer-reviewed or replicated.</textarea>
           <div class="char-count">120 / 280</div>
           <div class="preview-lbl">Preview — how others will see your note:</div>
           <div class="preview-box">
             <div class="preview-tag">Context note attached by user</div>
             <div class="preview-note">This story misrepresents a preprint study. The 40% figure refers to a small subgroup and has not been peer-reviewed or replicated.</div>
           </div>
-          <button class="btn-primary">Attach &amp; Share</button>
+          <!-- FIX 2: Button click triggers the success confirmation state -->
+          <button class="btn-primary" onclick="showSuccess()">Attach &amp; Share</button>
+        </div>
+
+        <!-- FIX 2 — Success overlay (hidden until "Attach & Share" is clicked) -->
+        <div class="success-overlay" id="success-overlay" style="display:none">
+          <div class="success-icon">✓</div>
+          <div class="success-ttl">Note Attached &amp; Shared</div>
+          <div class="success-sub">Your context note has been added. It will appear below this post in your followers' feeds to help them evaluate the claim.</div>
+          <div class="success-note-preview">
+            <div class="success-note-label">Your note is now live</div>
+            <div class="success-note-text">This story misrepresents a preprint study. The 40% figure refers to a small subgroup and has not been peer-reviewed or replicated.</div>
+          </div>
+          <button class="success-btn-done" onclick="show(0)">Done — Back to Feed</button>
         </div>
       </div>
 
@@ -785,59 +703,68 @@
               </marker>
             </defs>
 
-            <!-- Screen 1: Feed -->
+            <!-- Screen 1: Feed (with inline badge note) -->
             <rect x="107" y="12" width="100" height="78" rx="12" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
             <text x="157" y="36" text-anchor="middle" font-size="12" font-weight="600" fill="#0D47A1" font-family="-apple-system,sans-serif">Feed View</text>
-            <rect x="119" y="44" width="76" height="7" rx="3" fill="#B8CFFE"/>
-            <rect x="119" y="55" width="52" height="7" rx="3" fill="#B8CFFE"/>
+            <rect x="119" y="44" width="76" height="5" rx="2" fill="#B8CFFE"/>
+            <!-- inline badge pill in diagram -->
+            <rect x="119" y="53" width="40" height="8" rx="4" fill="#FFF4DC" stroke="#E6A817" stroke-width="1"/>
+            <text x="139" y="60" text-anchor="middle" font-size="6" fill="#C97D00" font-family="-apple-system,sans-serif">⚠ Disputed</text>
             <rect x="119" y="67" width="76" height="14" rx="5" fill="#1A73E8"/>
             <text x="157" y="77" text-anchor="middle" font-size="9" fill="#fff" font-family="-apple-system,sans-serif">Share →</text>
 
-            <!-- Arrow 1→2 -->
             <line x1="157" y1="90" x2="157" y2="132" stroke="#1A73E8" stroke-width="1.5" marker-end="url(#ab)"/>
             <text x="166" y="114" font-size="9" fill="#1A73E8" font-family="-apple-system,sans-serif">tap share</text>
 
-            <!-- Screen 2: Panel -->
+            <!-- Screen 2: Credibility Panel -->
             <rect x="107" y="132" width="100" height="78" rx="12" fill="#FFF4DC" stroke="#E6A817" stroke-width="1.5"/>
             <text x="157" y="156" text-anchor="middle" font-size="12" font-weight="600" fill="#9A6A00" font-family="-apple-system,sans-serif">Credibility</text>
             <text x="157" y="170" text-anchor="middle" font-size="12" font-weight="600" fill="#9A6A00" font-family="-apple-system,sans-serif">Panel</text>
             <circle cx="157" cy="186" r="10" fill="none" stroke="#E6A817" stroke-width="1.5"/>
             <text x="157" y="190" text-anchor="middle" font-size="11" fill="#C97D00" font-family="-apple-system,sans-serif">⚠</text>
 
-            <!-- Arrow 2→Detail -->
             <line x1="207" y1="168" x2="250" y2="168" stroke="#1A73E8" stroke-width="1.5" marker-end="url(#ab)"/>
             <text x="228" y="160" text-anchor="middle" font-size="9" fill="#1A73E8" font-family="-apple-system,sans-serif">see details</text>
 
-            <!-- Screen 3: Detail -->
+            <!-- Screen 3: Detail View -->
             <rect x="208" y="132" width="94" height="78" rx="12" fill="#F0F4FF" stroke="#1A73E8" stroke-width="1"/>
             <text x="255" y="155" text-anchor="middle" font-size="11" font-weight="600" fill="#1A73E8" font-family="-apple-system,sans-serif">Detail</text>
             <text x="255" y="168" text-anchor="middle" font-size="11" font-weight="600" fill="#1A73E8" font-family="-apple-system,sans-serif">View</text>
             <rect x="220" y="176" width="66" height="5" rx="2" fill="#B8CFFE"/>
             <rect x="220" y="185" width="48" height="5" rx="2" fill="#B8CFFE"/>
-            <rect x="220" y="194" width="60" height="5" rx="2" fill="#B8CFFE"/>
+            <!-- greyed dispute button in diagram -->
+            <rect x="220" y="194" width="66" height="8" rx="3" fill="#ECEAE6" stroke="#C8C5BF" stroke-width="1" stroke-dasharray="2 2"/>
+            <text x="253" y="200" text-anchor="middle" font-size="5.5" fill="#9B9893" font-family="-apple-system,sans-serif">Dispute (disabled)</text>
 
-            <!-- Back: Detail→Panel -->
             <path d="M210 144 Q186 134 186 134 L164 134" stroke="#9B9893" stroke-width="1" stroke-dasharray="3 2" fill="none" marker-end="url(#ag)"/>
             <text x="184" y="128" font-size="8" fill="#9B9893" font-family="-apple-system,sans-serif" text-anchor="middle">back</text>
 
-            <!-- Arrow 2→Context -->
             <line x1="157" y1="210" x2="157" y2="300" stroke="#1A73E8" stroke-width="1.5" marker-end="url(#ab)"/>
-            <text x="168" y="258" font-size="9" fill="#1A73E8" font-family="-apple-system,sans-serif">share anyway</text>
+            <text x="170" y="258" font-size="9" fill="#1A73E8" font-family="-apple-system,sans-serif">share anyway</text>
 
-            <!-- Screen 4: Context -->
+            <!-- Screen 4: Add Context -->
             <rect x="107" y="300" width="100" height="78" rx="12" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5"/>
-            <text x="157" y="326" text-anchor="middle" font-size="12" font-weight="600" fill="#1B5E20" font-family="-apple-system,sans-serif">Add</text>
-            <text x="157" y="340" text-anchor="middle" font-size="12" font-weight="600" fill="#1B5E20" font-family="-apple-system,sans-serif">Context</text>
-            <rect x="119" y="350" width="76" height="16" rx="5" fill="#43A047"/>
-            <text x="157" y="361" text-anchor="middle" font-size="9" fill="#fff" font-family="-apple-system,sans-serif">Attach &amp; Share</text>
+            <text x="157" y="324" text-anchor="middle" font-size="12" font-weight="600" fill="#1B5E20" font-family="-apple-system,sans-serif">Add</text>
+            <text x="157" y="338" text-anchor="middle" font-size="12" font-weight="600" fill="#1B5E20" font-family="-apple-system,sans-serif">Context</text>
+            <rect x="119" y="349" width="76" height="16" rx="5" fill="#43A047"/>
+            <text x="157" y="360" text-anchor="middle" font-size="9" fill="#fff" font-family="-apple-system,sans-serif">Attach &amp; Share</text>
+
+            <!-- Arrow 4→ Success -->
+            <line x1="157" y1="378" x2="157" y2="408" stroke="#43A047" stroke-width="1.5" marker-end="url(#ab)"/>
+
+            <!-- Screen 5: Success -->
+            <rect x="107" y="408" width="100" height="52" rx="12" fill="#E8F5E9" stroke="#43A047" stroke-width="1.5"/>
+            <text x="157" y="428" text-anchor="middle" font-size="11" font-weight="600" fill="#1B5E20" font-family="-apple-system,sans-serif">✓ Success</text>
+            <text x="157" y="442" text-anchor="middle" font-size="9" fill="#2E7D32" font-family="-apple-system,sans-serif">Confirmation shown</text>
+            <text x="157" y="452" text-anchor="middle" font-size="8" fill="#2E7D32" font-family="-apple-system,sans-serif">(Fix 2 — closure)</text>
 
             <!-- Legend -->
-            <rect x="12" y="420" width="290" height="76" rx="10" fill="#FFFFFF" stroke="#E0DDD8" stroke-width="1"/>
-            <text x="157" y="440" text-anchor="middle" font-size="10" font-weight="600" fill="#5C5A55" font-family="-apple-system,sans-serif">Navigation key</text>
-            <line x1="30" y1="456" x2="68" y2="456" stroke="#1A73E8" stroke-width="1.5" marker-end="url(#ab)"/>
-            <text x="76" y="460" font-size="9" fill="#5C5A55" font-family="-apple-system,sans-serif">Primary flow</text>
-            <line x1="30" y1="476" x2="68" y2="476" stroke="#9B9893" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#ag)"/>
-            <text x="76" y="480" font-size="9" fill="#5C5A55" font-family="-apple-system,sans-serif">Back navigation</text>
+            <rect x="12" y="468" width="290" height="36" rx="10" fill="#FFFFFF" stroke="#E0DDD8" stroke-width="1"/>
+            <text x="157" y="484" text-anchor="middle" font-size="10" font-weight="600" fill="#5C5A55" font-family="-apple-system,sans-serif">Navigation key</text>
+            <line x1="30" y1="496" x2="60" y2="496" stroke="#1A73E8" stroke-width="1.5" marker-end="url(#ab)"/>
+            <text x="68" y="500" font-size="8.5" fill="#5C5A55" font-family="-apple-system,sans-serif">Primary flow</text>
+            <line x1="160" y1="496" x2="190" y2="496" stroke="#9B9893" stroke-width="1" stroke-dasharray="3 2" marker-end="url(#ag)"/>
+            <text x="198" y="500" font-size="8.5" fill="#5C5A55" font-family="-apple-system,sans-serif">Back nav</text>
           </svg>
         </div>
       </div>
@@ -848,24 +775,63 @@
   <div class="screen-label" id="screen-label-txt">Screen 1 — Feed View</div>
 </div>
 
+<!-- Fix callout strips per screen -->
+<div id="fix-s0" class="fix-strip i3">
+  <strong>Fix 3 Applied — Issue 3 (Nielsen #1 · Shneiderman Locus of Control)</strong>
+  Inline "⚠ Disputed" / "✓ Verified" pills appear directly on each feed card before any interaction, preventing the anchor effect where users absorb false information before seeing a warning.
+</div>
+<div id="fix-s1" class="fix-strip i3" style="display:none">
+  <strong>No fix active on this screen</strong>
+  Amber sheet behaviour is unchanged — "See Details" and "Share Anyway" are both active options as designed.
+</div>
+<div id="fix-s2" class="fix-strip i1" style="display:none">
+  <strong>Fix 1 Applied — Issue 1 (Nielsen Error Prevention · Shneiderman Error Handling)</strong>
+  "Share Anyway" is rendered as a visually disabled button (dashed border, greyed text, not-allowed cursor) with an explanatory tooltip. User cannot silently click a dead button — they understand why it is locked.
+</div>
+<div id="fix-s3" class="fix-strip" style="display:none;background:var(--bg-muted);border:1px solid var(--border-light);color:var(--text-secondary)">
+  <strong style="color:var(--text-tertiary)">No fix on Green screen</strong>
+  Verified content flows straight to sharing as designed.
+</div>
+<div id="fix-s4" class="fix-strip i1" style="display:none">
+  <strong>Fix 1 Applied — Issue 1 (Nielsen Error Prevention · Shneiderman Error Handling)</strong>
+  "Disagree with this Assessment?" is disabled with dashed styling and a tooltip reading "Read all sections above to unlock dispute form." The button is not merely hidden — its presence communicates the feature exists, while the disabled state prevents a confusing dead click.
+</div>
+<div id="fix-s5" class="fix-strip i2" style="display:none">
+  <strong>Fix 2 Applied — Issue 2 (Nielsen Visibility of Status · Shneiderman Design for Closure)</strong>
+  After clicking "Attach &amp; Share," a full-screen success confirmation appears with a green check, confirmation copy, and a preview of the live note. This provides unambiguous closure so users know their action completed successfully.
+</div>
+<div id="fix-s6" class="fix-strip" style="display:none;background:var(--bg-muted);border:1px solid var(--border-light);color:var(--text-secondary)">
+  <strong style="color:var(--text-tertiary)">Flow diagram updated</strong>
+  Success state and disabled buttons now reflected in the flow map.
+</div>
+
 <script>
   const screens = ['s0','s1','s2','s3','s4','s5','s6'];
+  const fixes   = ['fix-s0','fix-s1','fix-s2','fix-s3','fix-s4','fix-s5','fix-s6'];
   const labels  = [
-    'Screen 1 — Feed View',
+    'Screen 1 — Feed View (Fix 3: proactive badges)',
     'Screen 2 — Credibility Panel (Amber)',
-    'Screen 2b — High Risk (Red)',
+    'Screen 2b — High Risk / Red (Fix 1: disabled Share)',
     'Screen 2c — Verified (Green)',
-    'Screen 3 — Detail View',
-    'Screen 4 — Add Context',
-    'Flow Diagram'
+    'Screen 3 — Detail View (Fix 1: disabled Dispute)',
+    'Screen 4 — Add Context (Fix 2: success confirmation)',
+    'Flow Diagram (updated)'
   ];
   const btns = document.querySelectorAll('.nav-btn');
+
   function show(i) {
-    screens.forEach((id, j) => {
-      document.getElementById(id).style.display = j === i ? '' : 'none';
-    });
+    screens.forEach((id, j) => { document.getElementById(id).style.display = j === i ? '' : 'none'; });
+    fixes.forEach((id, j)   => { document.getElementById(id).style.display = j === i ? '' : 'none'; });
     btns.forEach((b, j) => b.classList.toggle('active', j === i));
     document.getElementById('screen-label-txt').textContent = labels[i];
+    // Reset success overlay whenever leaving screen 5
+    if (i !== 5) {
+      document.getElementById('success-overlay').style.display = 'none';
+    }
+  }
+
+  function showSuccess() {
+    document.getElementById('success-overlay').style.display = 'flex';
   }
 </script>
 </body>
